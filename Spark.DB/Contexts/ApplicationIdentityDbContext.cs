@@ -31,6 +31,7 @@ namespace PatientRegistrySystem.DB.Contexts
             });
 
 
+
             modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
         }
