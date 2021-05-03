@@ -1,5 +1,4 @@
-﻿using Spark.Domain.Dto;
-using Spark.Domain.Dto.CreateModels;
+﻿using Spark.Domain.Dto.CreateModels;
 using System.Security.Claims;
 using System.Threading.Tasks;
 

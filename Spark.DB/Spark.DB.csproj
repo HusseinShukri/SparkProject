@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Spark.Domain\Spark.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\DBModels\" />
+  </ItemGroup>
+
 </Project>

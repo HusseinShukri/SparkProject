@@ -158,21 +158,21 @@ namespace Spark.DB.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "2ce78982-6ddc-4afa-9273-96a117ad807c",
+                            ConcurrencyStamp = "4b55cc1f-74ac-4ba7-986c-2aa08c19c624",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "6c200756-1bfd-4018-8979-efdd4f80a8d0",
+                            ConcurrencyStamp = "9a45cc62-372d-4028-99d7-de1cb248aa4f",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "c83d4dc8-2b40-46c0-b044-298cb3dab8e1",
+                            ConcurrencyStamp = "0481bd43-2695-4266-9d1a-0f8f616f103c",
                             Name = "Teacher",
                             NormalizedName = "TEACHER"
                         });
@@ -185,9 +185,6 @@ namespace Spark.DB.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -196,14 +193,11 @@ namespace Spark.DB.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -216,17 +210,11 @@ namespace Spark.DB.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)

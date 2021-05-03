@@ -8,6 +8,7 @@ using Spark.API.ViewModel.Register;
 using Spark.DB.Models.IdentityModels;
 using Spark.Domain.Dto.CreateModels;
 using Spark.Services.StudentServices;
+using Spark.Services.TeacherServices;
 using System.Threading.Tasks;
 
 namespace Spark.API.Controllers
@@ -21,17 +22,20 @@ namespace Spark.API.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IMapper _mapper;
         private readonly IStudentService _studentService;
+        private readonly ITeaherService _teaherService;
 
 
         public AccountController(UserManager<ApplicationUser> userManager
              , SignInManager<ApplicationUser> signInManager
             , IMapper mapper,
-            IStudentService studentService)
+            IStudentService studentService,
+            ITeaherService teaherService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
             _studentService = studentService;
+            _teaherService = teaherService;
         }
 
 
@@ -42,22 +46,23 @@ namespace Spark.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                if ((await _userManager.FindByEmailAsync(model.Email)) != null)
+                var currentUser = (await _userManager.FindByEmailAsync(model.Email));
+                if (currentUser != null)
                 {
                     await _signInManager.SignOutAsync();
                     var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return Ok();
+                        return Ok(_mapper.Map<UserInitInfo>(await _userManager.FindByEmailAsync(model.Email)));
                     }
                     else
                     {
-                        return BadRequest("Fild to signin ");
+                        return BadRequest("Field to signing ");
                     }
                 }
                 else
                 {
-                    return BadRequest("Invaled Email or passowrd");
+                    return BadRequest("Invalid Email or password");
                 }
             }
             else
@@ -104,7 +109,7 @@ namespace Spark.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _studentService.CreateAsync(_mapper.Map<ApplicationUserCreateModel>(model));
+                var result = await _teaherService.CreateAsync(_mapper.Map<ApplicationUserCreateModel>(model));
                 if (result)
                 {
                     return Ok("Created");

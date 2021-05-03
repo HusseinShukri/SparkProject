@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spark.DB", "Spark.DB\Spark.DB.csproj", "{1862CCCA-9D86-44A0-9F6C-CE70609CC5CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7170513C-4DCF-4497-A8AB-49FF16CFD098} = {7170513C-4DCF-4497-A8AB-49FF16CFD098}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spark.Domain", "Spark.Domain\Spark.Domain.csproj", "{7170513C-4DCF-4497-A8AB-49FF16CFD098}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spark.Services", "Spark.Services\Spark.Services.csproj", "{ECFBEA4E-D375-47AB-89FA-F49AEF2B03BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spark.API", "Spark.API\Spark.API.csproj", "{0CF81C3F-3217-436E-8CE9-F588FCECD97F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7170513C-4DCF-4497-A8AB-49FF16CFD098} = {7170513C-4DCF-4497-A8AB-49FF16CFD098}
+		{ECFBEA4E-D375-47AB-89FA-F49AEF2B03BC} = {ECFBEA4E-D375-47AB-89FA-F49AEF2B03BC}
+		{1862CCCA-9D86-44A0-9F6C-CE70609CC5CA} = {1862CCCA-9D86-44A0-9F6C-CE70609CC5CA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{43399AC3-391C-49BD-B512-C48AB603E3B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1862CCCA-9D86-44A0-9F6C-CE70609CC5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1862CCCA-9D86-44A0-9F6C-CE70609CC5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1862CCCA-9D86-44A0-9F6C-CE70609CC5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1862CCCA-9D86-44A0-9F6C-CE70609CC5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7170513C-4DCF-4497-A8AB-49FF16CFD098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7170513C-4DCF-4497-A8AB-49FF16CFD098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7170513C-4DCF-4497-A8AB-49FF16CFD098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7170513C-4DCF-4497-A8AB-49FF16CFD098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFBEA4E-D375-47AB-89FA-F49AEF2B03BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFBEA4E-D375-47AB-89FA-F49AEF2B03BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFBEA4E-D375-47AB-89FA-F49AEF2B03BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFBEA4E-D375-47AB-89FA-F49AEF2B03BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CF81C3F-3217-436E-8CE9-F588FCECD97F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CF81C3F-3217-436E-8CE9-F588FCECD97F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CF81C3F-3217-436E-8CE9-F588FCECD97F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CF81C3F-3217-436E-8CE9-F588FCECD97F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43399AC3-391C-49BD-B512-C48AB603E3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43399AC3-391C-49BD-B512-C48AB603E3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43399AC3-391C-49BD-B512-C48AB603E3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43399AC3-391C-49BD-B512-C48AB603E3B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40744BDB-611C-448C-8DF3-DF02228585BA}
+	EndGlobalSection
+EndGlobal

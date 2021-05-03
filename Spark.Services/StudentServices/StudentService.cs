@@ -1,4 +1,5 @@
-﻿using Spark.DB.Repositories.GenericRepository;
+﻿using AutoMapper;
+using Spark.DB.Repositories.AplicationUserRepository;
 using Spark.Domain.Dto;
 using Spark.Domain.Dto.CreateModels;
 using Spark.Domain.Roles;
@@ -9,22 +10,24 @@ namespace Spark.Services.StudentServices
 {
     public class StudentService : IStudentService
     {
-        private readonly IGenericRepository<ApplicationUserCreateModel> _genericRepository;
+        private readonly IAplicationUserRepository _aplicationUserRepository;
+        private readonly IMapper _mapper;
 
-        public StudentService(IGenericRepository<ApplicationUserCreateModel> genericRepository)
+        public StudentService(IAplicationUserRepository aplicationUserRepository, IMapper mapper)
         {
-            _genericRepository = genericRepository;
+            _aplicationUserRepository = aplicationUserRepository;
+            _mapper = mapper;
         }
 
         public async Task<bool> CreateAsync(ApplicationUserCreateModel model)
         {
             model.UserRole = UserRoles.Student;
-            return await _genericRepository.CreateEntityAsync(model);
+            return await _aplicationUserRepository.CreateUserAsync(model);
         }
 
         public async Task<ApplicationUserCreateModel> FindUserAsync(ClaimsPrincipal claimsPrincipal)
         {
-            return await _genericRepository.FindEntityClaimsAsync(claimsPrincipal);
+            return _mapper.Map<ApplicationUserCreateModel>(await _aplicationUserRepository.FindUserAsync(claimsPrincipal));
         }
     }
 }

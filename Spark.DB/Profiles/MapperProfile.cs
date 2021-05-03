@@ -10,6 +10,9 @@ namespace Spark.DB.Profiles
         {
             CreateMap<ApplicationUser, ApplicationUserDto>()
                 .ReverseMap();
+
+            CreateMap<ApplicationUser,BasicUserinfo>()
+                .ReverseMap();
         }
     }
 }

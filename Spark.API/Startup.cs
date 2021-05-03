@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 using PatientRegistrySystem.DB.Contexts;
 using Spark.DB.Models.IdentityModels;
 using Spark.DB.Repositories.AplicationUserRepository;
-using Spark.DB.Repositories.GenericRepository;
 using Spark.Services.StudentServices;
+using Spark.Services.TeacherServices;
 using System;
 
 namespace Spark.API
@@ -32,13 +34,13 @@ namespace Spark.API
             services.AddControllersWithViews();
             services.AddControllers();
             services.AddProblemDetails();
+            services.AddMailKit(config =>config.UseMailKit(Configuration.GetSection("Email").Get<MailKitOptions>()));
 
-
-            //rpos
+            //repository
             services.AddScoped<IAplicationUserRepository, AplicationUserRepository>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             //services
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ITeaherService, TeaherService>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

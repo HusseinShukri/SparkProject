@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AdminServices\" />
+    <Folder Include="TeacherServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Spark.DB\Spark.DB.csproj" />
+    <ProjectReference Include="..\Spark.Domain\Spark.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Spark.DB.Models.IdentityModels;
 using PatientRegistrySystem.DB.Contexts;
+using System.Collections.Generic;
 
 namespace Spark.DB.Repositories.AplicationUserRepository
 {
@@ -20,20 +21,26 @@ namespace Spark.DB.Repositories.AplicationUserRepository
             _userManager = userManager;
         }
 
-        public async Task<IdentityResult> CreateUserAsync(ApplicationUserCreateModel model)
+        public async Task<bool> CreateUserAsync(ApplicationUserCreateModel model)
         {
             var newAcount = _mapper.Map<ApplicationUser>(model.ApplicationUser);
             var result = await _userManager.CreateAsync(newAcount, model.Password);
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(newAcount, model.UserRole);
+                return true;
             }
-            return result;
+            return false;
         }
 
         public async Task<ApplicationUserDto> FindUserAsync(ClaimsPrincipal claimsPrincipal)
         {
             return _mapper.Map<ApplicationUserDto>(await _userManager.GetUserAsync(claimsPrincipal));
+        }
+
+        public async Task<List<BasicUserinfo>> GetAllUsersAsync(string userRole)
+        {
+            return _mapper.Map<List<BasicUserinfo>>(await _userManager.GetUsersInRoleAsync(userRole));
         }
     }
 }

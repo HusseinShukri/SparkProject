@@ -1,6 +1,6 @@
 ﻿namespace Spark.Domain.Dto.CreateModels
 {
-    public  class ApplicationUserCreateModel : IDomainModel
+    public  class ApplicationUserCreateModel
     {
         public ApplicationUserDto ApplicationUser { get; set; }
         public string Password { get; set; }
