@@ -105,7 +105,7 @@ namespace Spark.API.Controllers
         [Route("[action]")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> RegisterTeacher([FromBody] RegisterTeacherViewModel model)
+        public async Task<IActionResult> RegisterTeacher([FromBody] RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {

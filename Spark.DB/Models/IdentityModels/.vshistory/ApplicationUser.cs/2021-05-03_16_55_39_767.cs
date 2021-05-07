@@ -8,7 +8,6 @@ namespace Spark.DB.Models.IdentityModels
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Category { get; set; }
         public byte[] ProfilePicture { get; set; }
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
     }
