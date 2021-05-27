@@ -54,9 +54,9 @@ namespace Spark.API.Controllers
                     var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
                     if (result.Succeeded)
                     {
-                        var userApp = await _userManager.FindByEmailAsync(model.Email);
-                        var roles = await _userManager.GetRolesAsync(userApp);
-                        var mappedUser = _mapper.Map<UserInitInfo>(userApp);
+                        var b = await _userManager.FindByEmailAsync(model.Email);
+                        var roles = await _userManager.GetRolesAsync(b);
+                        var mappedUser = _mapper.Map<UserInitInfo>(b);
                         mappedUser.UserRole = roles[0];
                         return Ok(mappedUser);
                     }

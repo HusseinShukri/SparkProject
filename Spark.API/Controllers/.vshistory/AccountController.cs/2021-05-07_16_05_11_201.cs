@@ -7,7 +7,6 @@ using Spark.API.ViewModel.Login;
 using Spark.API.ViewModel.Register;
 using Spark.DB.Models.IdentityModels;
 using Spark.Domain.Dto.CreateModels;
-using Spark.Domain.Roles;
 using Spark.Services.StudentServices;
 using Spark.Services.TeacherServices;
 using System.Threading.Tasks;
@@ -54,11 +53,7 @@ namespace Spark.API.Controllers
                     var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
                     if (result.Succeeded)
                     {
-                        var userApp = await _userManager.FindByEmailAsync(model.Email);
-                        var roles = await _userManager.GetRolesAsync(userApp);
-                        var mappedUser = _mapper.Map<UserInitInfo>(userApp);
-                        mappedUser.UserRole = roles[0];
-                        return Ok(mappedUser);
+                        return Ok(_mapper.Map<UserInitInfo>(await _userManager.FindByEmailAsync(model.Email)));
                     }
                     else
                     {
