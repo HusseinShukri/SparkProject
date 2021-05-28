@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Spark.API.ViewModel.Login;
-using Spark.Services.models;
 using Spark.API.ViewModel.Register;
 using Spark.DB.Models.IdentityModels;
 using Spark.Domain.Dto;

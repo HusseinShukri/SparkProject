@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Spark.Domain.Roles;
+using Spark.API.ViewModel.Users;
 using Spark.Services.AccountServices;
 using System.Threading.Tasks;
 
 namespace Spark.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProfileController : Controller
@@ -22,19 +22,12 @@ namespace Spark.API.Controllers
         }
 
         [Route("[action]")]
-        [HttpGet]
-        //[Authorize(Roles = UserRoles.Student)]
-        //[Authorize(Roles = UserRoles.Teacher)]
+        [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> GetUserInformation()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Ok(await _accountServices.UserIndormationAsync(User));
-            }
-            else
-            {
-                return BadRequest();
-            }
+            if (User.Identity.IsAuthenticated) { } else { BadRequest()}
+            return Ok(await _accountServices.UserIndormationAsync(User));
         }
     }
 }

@@ -47,6 +47,7 @@ namespace Spark.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
+            var applicationUser = await _userManager.GetUserAsync(User);
             if (ModelState.IsValid)
             {
                 var currentUser = (await _userManager.FindByEmailAsync(model.Email));

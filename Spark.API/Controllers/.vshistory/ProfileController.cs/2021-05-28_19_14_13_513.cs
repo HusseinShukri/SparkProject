@@ -22,7 +22,7 @@ namespace Spark.API.Controllers
         }
 
         [Route("[action]")]
-        [HttpGet]
+        [HttpGets]
         //[Authorize(Roles = UserRoles.Student)]
         //[Authorize(Roles = UserRoles.Teacher)]
         public async Task<IActionResult> GetUserInformation()

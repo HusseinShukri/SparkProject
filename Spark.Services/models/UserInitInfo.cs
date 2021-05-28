@@ -1,4 +1,4 @@
-﻿namespace Spark.API.ViewModel.Login
+﻿namespace Spark.Services.models
 {
     public class UserInitInfo
     {

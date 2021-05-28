@@ -52,10 +52,6 @@ namespace Spark.API.Controllers
                 var currentUser = (await _userManager.FindByEmailAsync(model.Email));
                 if (currentUser != null)
                 {
-                    await _signInManager.SignOutAsync();
-                    var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
-                    if (result.Succeeded)
-                    {
                         return Ok();
                     }
                     else

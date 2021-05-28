@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Spark.DB.Repositories.AplicationUserRepository;
+using Spark.Domain.Dto;
 using Spark.Domain.Dto.CreateModels;
 using Spark.Domain.Roles;
 using System.Security.Claims;

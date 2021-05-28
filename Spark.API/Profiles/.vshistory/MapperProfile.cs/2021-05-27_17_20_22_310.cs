@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Spark.API.ViewModel.Login;
-using Spark.Services.models;
 using Spark.API.ViewModel.Register;
 using Spark.DB.Models.IdentityModels;
 using Spark.Domain.Dto;
@@ -38,6 +37,7 @@ namespace Spark.API.Profiles
                 .ForMember(dir => dir.LastName, opt => opt.MapFrom(src => src.LastName))
                 .ForMember(dir => dir.Email, opt => opt.MapFrom(src => src.UserEmail))
                 .ReverseMap();
+
         }
     }
 }

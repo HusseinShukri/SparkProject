@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Spark.API.Controllers.ControllersHelper;
@@ -10,8 +9,6 @@ using Spark.DB.Models.IdentityModels;
 using Spark.Domain.Dto.CreateModels;
 using Spark.Services.StudentServices;
 using Spark.Services.TeacherServices;
-using System;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Spark.API.Controllers

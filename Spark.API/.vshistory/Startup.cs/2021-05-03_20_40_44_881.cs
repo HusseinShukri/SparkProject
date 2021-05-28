@@ -13,7 +13,6 @@ using NETCore.MailKit.Infrastructure.Internal;
 using PatientRegistrySystem.DB.Contexts;
 using Spark.DB.Models.IdentityModels;
 using Spark.DB.Repositories.AplicationUserRepository;
-using Spark.Services.AccountServices;
 using Spark.Services.StudentServices;
 using Spark.Services.TeacherServices;
 using System;
@@ -42,7 +41,6 @@ namespace Spark.API
             //services
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeaherService, TeaherService>();
-            services.AddScoped<IAccountServices, AccountServices>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

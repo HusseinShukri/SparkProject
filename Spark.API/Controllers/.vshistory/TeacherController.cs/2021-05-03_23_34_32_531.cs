@@ -27,6 +27,7 @@ namespace Spark.API.Controllers
         //[Authorize(Roles = UserRoles.Student)]
         //[Authorize(Roles = UserRoles.Teacher)]
         public async Task<IActionResult> getAllTeachers() {
+
             var result =  await _teaherService.GetAllUsersAsync();
             if (result == null)
             {
