@@ -1,12 +1,11 @@
 import React,{useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import{ FaBars, FaTimes} from 'react-icons/fa'
-import {Button} from '../../Button'
-import './Nav.css';
+import { Button } from '../../Button'
+import './Navvvv.css'
 import logoImg from '../../../images/logo2.png'
 import{ IconContext } from 'react-icons/lib'
 import { useHistory } from 'react-router-dom'
-
 
 function Navbar() {
 
@@ -39,42 +38,22 @@ function Navbar() {
     return (
     <>
     <IconContext.Provider value={{color: '#fff'}}>
-        <div className="navbar">
-            <div className="navbar-container container">
-                <Link to='/mainpage' className="navbar-logo" onClick={closeMobileMenu}>
-                    <img src={logoImg} className='navbar-icon'/>
+        <div className="navbars">
+            <div className="navbar-containers containers">
+                <Link to='/mainpage' className="navbar-logos" onClick={closeMobileMenu}>
+                    <img src={logoImg} className='navbar-icons'/>
                     SPARK
                 </Link>
-                <div className="menu-icon" onClick={handleClick}>
+                <div className="menu-icons" onClick={handleClick}>
                      {click ? <FaTimes /> : <FaBars />}
                 </div>
-                <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                    <li className="nav-items">
-                        <Link to='/mainpage'className='nav-links' onClick={closeMobileMenu}>
-                            Home
-                        </Link>
-                    </li>
-                      <li className="nav-items"> 
-                        <Link to='/Prices'className='nav-links' onClick={closeMobileMenu}>
-                            Purchase
-                        </Link>
-                    </li> 
-                    <li >
-                        <Link to='/chat' className='nav-links' onClick={closeMobileMenu}>
-                             Ask
-                        </Link>
-                    </li> 
-                    <li >
-                        <Link to='/Services' className='nav-links' onClick={closeMobileMenu}>
-                             Services
-                        </Link>
-                    </li> 
-                    <li >
-                        <Link to='/About' className='nav-links' onClick={closeMobileMenu}>
-                             About Us
-                        </Link>
-                    </li> 
-                    <li className="nav-btn">
+                <ul className={click ? 'nav-menus active' : 'nav-menus'}>
+                            <Link to='' className="btn-link" >
+                                <Button onClick={history.goBack} buttonStyle='btn--outline' buttonSize='btn--mobile'>
+                                    Leave
+                            </Button>
+                            </Link>
+                    <li className="nav-btns">
                        {button ? (
                            <Link to='' className="btn-link" >
                                <Button onClick={logout} buttonStyle='btn--outline' >

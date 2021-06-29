@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Spark.API.Controllers.ControllersHelper;
@@ -9,6 +10,8 @@ using Spark.DB.Models.IdentityModels;
 using Spark.Domain.Dto.CreateModels;
 using Spark.Services.StudentServices;
 using Spark.Services.TeacherServices;
+using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Spark.API.Controllers
@@ -124,5 +127,15 @@ namespace Spark.API.Controllers
                 return BadRequest(ModelState.GetErrors());
             }
         }
+
+        //create cookie
+        //public IActionResult CreateCookie() {
+        //    string key = "Mycookie";
+        //    string value = "WhatALovelyCookie";
+        //    CookieOptions cookieOptions = new CookieOptions();
+        //    cookieOptions.Expires = DateTime.Now.AddDays(7);
+        //    Response.Cookies.Append(key, value, cookieOptions);
+        //    return null;
+        //}
     }
 }

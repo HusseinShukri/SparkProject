@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Spark.DB.Models.IdentityModels;
+using PatientRegistrySystem.DB.Contexts;
 using System.Collections.Generic;
 
 namespace Spark.DB.Repositories.AplicationUserRepository

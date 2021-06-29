@@ -17,6 +17,8 @@ using Spark.Services.AccountServices;
 using Spark.Services.StudentServices;
 using Spark.Services.TeacherServices;
 using System;
+using System.Net;
+using System.Net.WebSockets;
 
 namespace Spark.API
 {
@@ -97,6 +99,9 @@ namespace Spark.API
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            app.UseWebSockets(); // websocket awarness 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -107,7 +112,7 @@ namespace Spark.API
                 spa.Options.SourcePath = "ClientApp";
                 if (env.IsDevelopment())
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
+               //     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
         }

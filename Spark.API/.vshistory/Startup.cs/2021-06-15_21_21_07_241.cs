@@ -110,6 +110,30 @@ namespace Spark.API
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            app.UseWebSockets(); // websocket awarness 
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/ws")
+                {
+                    if (context.WebSockets.IsWebSocketRequest)
+                    {
+                        using (WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync())
+                        {
+                            await Echo(context, webSocket);
+                        }
+                    }
+                    else
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    }
+                }
+                else
+                {
+                    await next();
+                }
+
+            });
         }
     }
 }

@@ -5,6 +5,7 @@ import {Button} from '../../Button'
 import './Nav.css';
 import logoImg from '../../../images/logo2.png'
 import{ IconContext } from 'react-icons/lib'
+import { useHistory } from 'react-router-dom'
 
 function Navbar() {
 
@@ -19,8 +20,17 @@ function Navbar() {
            setButton(true)
 
        }
-   }
+    }
+    const history = useHistory();
+    async function logout() {
+        let result = await fetch("http://localhost:5555/Account/Logout", {
+            method: 'POST',
 
+        })
+        localStorage.clear();
+        history.push("/")
+
+    }
    useEffect(() => {
        showButton();
    }, [])
@@ -49,7 +59,7 @@ function Navbar() {
                         </Link>
                     </li> 
                     <li >
-                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                <Link to={`/room/${localStorage.getItem('email')}`} className='nav-links' onClick={closeMobileMenu}>
                              Chat
                         </Link>
                     </li> 
@@ -59,20 +69,20 @@ function Navbar() {
                         </Link>
                     </li> 
                     <li >
-                        <Link to='/About' className='nav-links' onClick={closeMobileMenu}>
+                       <Link to='/Aboutt' className='nav-links' onClick={closeMobileMenu}>
                              About Us
                         </Link>
                     </li> 
                     <li className="nav-btn">
-                       {button ? (
-                           <Link to='/signpage' className="btn-link" >
-                               <Button buttonStyle='btn--outline' >
-                                   SIGN OUT
+                                {button ? (
+                                    <Link to='' className="btn-link" onClick={logout} >
+                                        <Button buttonStyle='btn--outline' >
+                                            SIGN OUT
                                </Button>
-                           </Link>     
-                       ):
-                       (
-                        <Link to='/signpage' className="btn-link" >
+                                    </Link>
+                                ) :
+                                    (
+                                        <Link to='' className="btn-link" onClick={logout}>
                             <Button buttonStyle='btn--outline' buttonSize='btn--mobile'>
                                 SIGN OUT
                             </Button>

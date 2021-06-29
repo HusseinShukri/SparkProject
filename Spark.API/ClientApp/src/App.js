@@ -12,7 +12,8 @@ import Services from './components/pages/MainPage/Services1'
 import Pol from './components/pages/MainPageT/Polices1'
 import Abou from './components/pages/MainPageT/About1'
 import signin from './components/pages/loginPage/Form'
-
+import chat from './components/pages/Chat/chat'
+import Room from "./components/pages/Room/Room";
 function App() {
     return (
         <Router>
@@ -22,12 +23,13 @@ function App() {
                 <Route path='/About' exact component={About} />
                 <Route path='/Prices' exact component={Prices} />
                 <Route path='/Services' exact component={Services} />
-                <Route path='/About' exact component={Abou} />
+                <Route path='/Aboutt' exact component={Abou} />
                 <Route path='/Polices' exact component={Pol} />
                 <Route path='/' exact component={Home} />
                 <Route path='/signpage' exact component={login} />
                 <Route path='/signin' exact component={signin} />
-
+                <Route path='/chat' exact component={chat} />
+                <Route path="/room/:roomID" component={Room} />
             </Switch>
             <Footer />
         </Router>

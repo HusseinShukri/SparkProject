@@ -110,6 +110,8 @@ namespace Spark.API
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            app.UseWebSockets();
         }
     }
 }

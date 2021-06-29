@@ -17,6 +17,8 @@ using Spark.Services.AccountServices;
 using Spark.Services.StudentServices;
 using Spark.Services.TeacherServices;
 using System;
+using System.Net;
+using System.Net.WebSockets;
 
 namespace Spark.API
 {
@@ -97,6 +99,9 @@ namespace Spark.API
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            app.UseWebSockets(); // websocket awarness 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -109,6 +114,30 @@ namespace Spark.API
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
+            });
+
+
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/ws")
+                {
+                    if (context.WebSockets.IsWebSocketRequest)
+                    {
+                        using (WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync())
+                        {
+                            await Echo(context, webSocket);
+                        }
+                    }
+                    else
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    }
+                }
+                else
+                {
+                    await next();
+                }
+
             });
         }
     }

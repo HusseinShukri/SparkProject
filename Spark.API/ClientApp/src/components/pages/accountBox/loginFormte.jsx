@@ -23,7 +23,7 @@ const validationSchema = yup.object({
     password: yup.string().required(),
 });
 
-export function LoginForm(props) {
+export function LoginFormT(props) {
     const { switchToSignup } = useContext(AccountContext);
     const { switchToSignupT } = useContext(AccountContext);
     const [error, setError] = useState(null);
@@ -41,7 +41,7 @@ export function LoginForm(props) {
         if (response) {
             localStorage.setItem('email', values.Email);
             alert("Welcome back in. Authenticating..." + localStorage.getItem('email'));
-            history.push("/mainpage");
+            history.push("/mainpageteacher");
         }
     };
 
@@ -116,7 +116,7 @@ export function LoginForm(props) {
           </BoldLink>
             </MutedLink>
             <MutedLink href="#">
-                  Signup as a Teacher{" "}
+                Signup as a Teacher{" "}
                 <BoldLink href="#" onClick={switchToSignupT}>
                     Signup
           </BoldLink>

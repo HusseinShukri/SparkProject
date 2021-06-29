@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Spark.Domain.Roles;
 using Spark.Services.AccountServices;
 using System.Threading.Tasks;
 
@@ -9,10 +12,12 @@ namespace Spark.API.Controllers
     [Route("[controller]")]
     public class ProfileController : Controller
     {
+        private readonly IMapper _mapper;
         private readonly IAccountServices _accountServices;
 
-        public ProfileController( IAccountServices accountServices)
+        public ProfileController(IMapper mapper, IAccountServices accountServices)
         {
+            _mapper = mapper;
             _accountServices = accountServices;
         }
 
