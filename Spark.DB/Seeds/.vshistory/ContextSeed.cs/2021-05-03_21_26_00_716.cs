@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Spark.DB.Models.IdentityModels;
+using Spark.Domain.Roles;
+using System.Threading.Tasks;
 
 namespace Spark.DB.Seeds
 {
